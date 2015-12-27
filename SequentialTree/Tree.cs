@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SequentialTree
 {
-    class Tree
+    public class Tree
     {
         static readonly int MaxDeep = 10;
         Node root;
@@ -73,7 +73,7 @@ namespace SequentialTree
         }
 
     }
-    class Node
+    public class Node
     {
         Sequence value;
         List<Node> childs = new List<Node>();

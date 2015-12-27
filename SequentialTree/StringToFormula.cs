@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SequentialTree
 {
-    static class StringToFormula
+    static public class StringToFormula
     {
         static public Formula Parse(string expression)
         {
