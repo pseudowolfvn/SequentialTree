@@ -23,7 +23,7 @@ namespace SequentialTree
                         currLexem = new Lexem(LexemType.Quantifier, position, expression[position]);
                     break;
                     case '(':
-                        if (prevLexem.Type == LexemType.Predicate)
+                        if (prevLexem != null && prevLexem.Type == LexemType.Predicate)
                         {
                             ++argumentBrackets;
                             currLexem = new Lexem(LexemType.OpenArgsBracket, position);
@@ -31,7 +31,7 @@ namespace SequentialTree
                         else currLexem = new Lexem(LexemType.OpenBracket, position);
                     break;
                     case ')':
-                        if (prevLexem.Type == LexemType.Var)
+                        if (prevLexem != null && prevLexem.Type == LexemType.Var)
                         {
                             --argumentBrackets;
                             currLexem = new Lexem(LexemType.ClosingArgsBracket, position);
