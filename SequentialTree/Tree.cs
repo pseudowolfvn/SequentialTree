@@ -22,6 +22,7 @@ namespace SequentialTree
             {
                 if (counterExamples == null && consequence != LogicalValue.Undetermined)
                 {
+                    counterExamples = new List<Example>();
                     foreach (var leave in unclosedLeaves)
                     {
                         Example counterExample = leave.Value.CounterExample;
@@ -30,20 +31,6 @@ namespace SequentialTree
                     }
                 }
                 return counterExamples;
-            }
-        }
-        public List<Example> CounterExample
-        {
-            get
-            {
-                if (consequence != LogicalValue.False) return null;
-                else
-                {
-                    List<Example> result = new List<Example>();
-                    foreach (var leave in unclosedLeaves)
-                        result.Add(leave.Value.CounterExample);
-                    return result;
-                }
             }
         }
         public Tree(Formula formula)

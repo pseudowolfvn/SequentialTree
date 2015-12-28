@@ -15,8 +15,9 @@ namespace SequentialTree
         {
             get
             {
-                if (counterExample == null && (!IsAtomic() || IsClosed()))
+                if (counterExample == null && IsAtomic() && !IsClosed())
                 {
+                    counterExample = new Example();
                     foreach (var formula in formulas)
                     {
                         Predicate p = formula as Predicate;

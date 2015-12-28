@@ -25,12 +25,14 @@ namespace SequentialTree
             InitializeComponent();
             try
             {
-                //Predicate trueP = new Predicate("P", new List<string> { "x" , "y" }, LogicalValue.False);
-                //Predicate falseP = new Predicate("P", new List<string> { "y" , "x" }, LogicalValue.False);
-                //MessageBox.Show(trueP.Equals(falseP).ToString());
                 Formula test = StringToFormula.Parse("P(x) -> #xQ(x) = #xP(x) -> Q(x)");
                 Tree tree = new Tree(test);
                 MessageBox.Show(tree.Check().ToString());
+                string examples = "";
+                foreach (var example in tree.CounterExamples)
+                {
+                    examples += example.ToString() + "\n";
+                }
             }
             catch (Exception e)
             {
