@@ -46,7 +46,8 @@ namespace SequentialTree
             result.Append("], ");
             foreach (var p in counterExample)
             {
-                result.Append(p.ToString() + ", ");
+                result.Append(p.ToString());
+                result.Append(" = " + p.Value.ToString() + ", ");
             }
             result.Remove(result.Length - 2, 2);
             result.Append(";\n");
