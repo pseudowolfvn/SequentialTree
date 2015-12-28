@@ -13,8 +13,25 @@ namespace SequentialTree
         Formula formula;
         Queue<Node> leaves = new Queue<Node>();
         Queue<Node> unclosedLeaves = new Queue<Node>();
+        List<Example> counterExamples;
         LogicalValue consequence = LogicalValue.Undetermined;
         public Node Root { get { return root; } }
+        public List<Example> CounterExamples
+        {
+            get
+            {
+                if (counterExamples == null && consequence != LogicalValue.Undetermined)
+                {
+                    foreach (var leave in unclosedLeaves)
+                    {
+                        Example counterExample = leave.Value.CounterExample;
+                        if (counterExample != null)
+                            counterExamples.Add(counterExample);
+                    }
+                }
+                return counterExamples;
+            }
+        }
         public List<Example> CounterExample
         {
             get

@@ -10,16 +10,18 @@ namespace SequentialTree
     {
         List<Formula> formulas;
         public List<Formula> Formulas { get { return formulas; } }
+        Example counterExample;
         public Example CounterExample
         {
             get
             {
-                if (!IsAtomic() || IsClosed()) return null;
-                Example counterExample = new Example();
-                foreach (var formula in formulas)
+                if (counterExample == null && (!IsAtomic() || IsClosed()))
                 {
-                    Predicate p = formula as Predicate;
-                    if (p != null) counterExample.Add(p);
+                    foreach (var formula in formulas)
+                    {
+                        Predicate p = formula as Predicate;
+                        if (p != null) counterExample.Add(p);
+                    }
                 }
                 return counterExample;
             }
