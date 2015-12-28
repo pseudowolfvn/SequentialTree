@@ -93,13 +93,13 @@ namespace SequentialTree
         }
         public override string ToString()
         {
-            string sequence = "";
+            StringBuilder sequence = new StringBuilder();
             foreach (var formula in formulas)
             {
-                if (formula.Value == LogicalValue.True) sequence += "+";
-                else if (formula.Value == LogicalValue.False) sequence += "-";
-                sequence += formula.ToString();
-                sequence += ",";
+                if (formula.Value == LogicalValue.True) sequence.Append("+");
+                else if (formula.Value == LogicalValue.False) sequence.Append("-");
+                sequence.Append(formula.ToString());
+                sequence.Append(",");
             }
             sequence.Replace("->", "→");
             sequence.Replace('+', '⊢');
@@ -108,7 +108,7 @@ namespace SequentialTree
             sequence.Replace('*', '∀');
             sequence.Replace('!', '¬');
             sequence.Replace('|', '∨');
-            return sequence;
+            return sequence.ToString();
         }
     }
 }

@@ -33,6 +33,7 @@ namespace SequentialTree
                 {
                     examples += example.ToString() + "\n";
                 }
+                MessageBox.Show(examples);
             }
             catch (Exception e)
             {
