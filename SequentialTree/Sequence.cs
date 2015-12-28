@@ -101,6 +101,13 @@ namespace SequentialTree
                 sequence += formula.ToString();
                 sequence += ",";
             }
+            sequence.Replace("->", "→");
+            sequence.Replace('+', '⊢');
+            sequence.Replace('-', '⊣');
+            sequence.Replace('#', '∃');
+            sequence.Replace('*', '∀');
+            sequence.Replace('!', '¬');
+            sequence.Replace('|', '∨');
             return sequence;
         }
     }
