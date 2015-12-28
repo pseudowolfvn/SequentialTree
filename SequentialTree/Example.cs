@@ -9,11 +9,11 @@ namespace SequentialTree
     public class Example
     {
         Dictionary<string, string> delta;
-        Dictionary<string, Dictionary<List<string>, LogicalValue>> counterExample;
+        HashSet<Predicate> counterExample;
         public Example()
         {
             delta = new Dictionary<string, string>();
-            counterExample = new Dictionary<string, Dictionary<List<string>, LogicalValue>>();
+            counterExample = new HashSet<Predicate>();
         }
         public void Add(Predicate p)
         {
@@ -28,11 +28,29 @@ namespace SequentialTree
                     newName = VarNamesGenerator.nextVarName();
                     delta.Add(var, newName);
                 }
-                newVars.Add(newName); 
+                newVars.Add(newName);
             }
-            if (!counterExample.ContainsKey(p.Name))
-                counterExample.Add(p.Name, new Dictionary<List<string>, LogicalValue>());
-            counterExample[p.Name].Add(newVars, p.Value);
+            Predicate exampleP = new Predicate(p.Name, newVars, p.Value);
+            if (!counterExample.Contains(exampleP))
+                counterExample.Add(exampleP);
+        }
+        public override string ToString()
+        {
+            StringBuilder result = new StringBuilder();
+            result.Append("ẟ = [");
+            foreach (var pair in delta)
+            {
+                result.Append(pair.Key + " ↦ " + pair.Value + ", ");
+            }
+            result.Remove(result.Length - 2, 2);
+            result.Append("], ");
+            foreach (var p in counterExample)
+            {
+                result.Append(p.ToString() + ", ");
+            }
+            result.Remove(result.Length - 2, 2);
+            result.Append(";\n");
+            return result.ToString();
         }
     }
 }

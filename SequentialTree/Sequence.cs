@@ -14,6 +14,7 @@ namespace SequentialTree
         {
             get
             {
+                if (!IsAtomic() && IsClosed()) return null;
                 Example counterExample = new Example();
                 foreach (var formula in formulas)
                 {

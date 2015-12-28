@@ -49,9 +49,10 @@ namespace SequentialTree
         }
         public override string ToString()
         {
-            StringBuilder arguments = new StringBuilder(args.Count);
+            StringBuilder arguments = new StringBuilder();
             foreach (var arg in args)
-                arguments.Append(arg);
+                arguments.Append(arg + ", ");
+            arguments.Remove(arguments.Length - 2, 2);
             return name + "(" + arguments.ToString() + ")";
         }
         public override Formula Clone()
