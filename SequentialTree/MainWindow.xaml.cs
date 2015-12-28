@@ -29,7 +29,6 @@ namespace SequentialTree
                 //Predicate falseP = new Predicate("P", new List<string> { "y" , "x" }, LogicalValue.False);
                 //MessageBox.Show(trueP.Equals(falseP).ToString());
                 Formula test = StringToFormula.Parse("P(x) -> #xQ(x) = #xP(x) -> Q(x)");
-                VarNamesGenerator.AddUsedNames(test.FreeVarNames());
                 Tree tree = new Tree(test);
                 MessageBox.Show(tree.Check().ToString());
             }

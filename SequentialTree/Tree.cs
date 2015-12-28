@@ -37,6 +37,8 @@ namespace SequentialTree
         }
         public LogicalValue Check()
         {
+            VarNamesGenerator.Reset();
+            VarNamesGenerator.AddUsedNames(formula.FreeVarNames());
             update(this.root);
             int deep = 1;
             while (leaves.Count != 0 && deep <= MaxDeep)

@@ -11,6 +11,11 @@ namespace SequentialTree
         static HashSet<string> usedVarNames = new HashSet<string>();
         static StringBuilder currentVarName = new StringBuilder("a");
         static public string LastUsedVarName { get { return currentVarName.ToString(); } } 
+        static public void Reset()
+        {
+            usedVarNames = new HashSet<string>();
+            currentVarName = new StringBuilder("a");
+        }
         static public void AddUsedNames(HashSet<string> varNames)
         {
             foreach (var name in varNames)
