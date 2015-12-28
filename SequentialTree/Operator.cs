@@ -103,6 +103,7 @@ namespace SequentialTree
                     vars.Add(var);
             foreach (var var in right.FreeVarNames())
                 vars.Add(var);
+            if (vars.Contains(varName)) vars.Remove(varName);
             return vars;
         }
         public override HashSet<string> VarNames()
